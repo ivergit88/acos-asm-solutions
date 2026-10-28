@@ -56,6 +56,7 @@ echo $?           # 20
 ## Навигация
 
 - [Передача контекста агенту для защиты: окна, команды, байты, ответы](AGENT_HANDOFF.md).
+- Сценарии по 10 минут: [min](AGENT_HANDOFF.md#defense-min), [for](AGENT_HANDOFF.md#defense-for), [double](AGENT_HANDOFF.md#defense-double).
 - [Контекст и правила для облачного агента](AGENTS.md).
 - [Происхождение заданий и требования к сдаче](docs/assignment.md).
 - [Алгоритмы, регистры и машинное кодирование](docs/explanation.md).
