@@ -1,0 +1,22 @@
+
+build/for:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000401000 <_start>:
+  401000:	bb 0a 00 00 00       	mov    ebx,0xa
+  401005:	b9 00 00 00 00       	mov    ecx,0x0
+  40100a:	b8 00 00 00 00       	mov    eax,0x0
+
+000000000040100f <check>:
+  40100f:	39 d8                	cmp    eax,ebx
+  401011:	7f 07                	jg     40101a <done>
+  401013:	01 c1                	add    ecx,eax
+  401015:	83 c0 02             	add    eax,0x2
+  401018:	eb f5                	jmp    40100f <check>
+
+000000000040101a <done>:
+  40101a:	89 cf                	mov    edi,ecx
+  40101c:	b8 3c 00 00 00       	mov    eax,0x3c
+  401021:	0f 05                	syscall

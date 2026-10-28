@@ -1,0 +1,62 @@
+
+build/double:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000401000 <_start>:
+  401000:	31 c0                	xor    eax,eax
+  401002:	31 ff                	xor    edi,edi
+  401004:	48 8d 35 fd 1f 00 00 	lea    rsi,[rip+0x1ffd]        # 403008 <__bss_start>
+  40100b:	ba 20 00 00 00       	mov    edx,0x20
+  401010:	0f 05                	syscall
+  401012:	48 8d 35 ef 1f 00 00 	lea    rsi,[rip+0x1fef]        # 403008 <__bss_start>
+  401019:	31 c0                	xor    eax,eax
+
+000000000040101b <next>:
+  40101b:	0f b6 0e             	movzx  ecx,BYTE PTR [rsi]
+  40101e:	83 f9 0a             	cmp    ecx,0xa
+  401021:	74 1c                	je     40103f <parsed>
+  401023:	83 f9 0d             	cmp    ecx,0xd
+  401026:	74 17                	je     40103f <parsed>
+  401028:	83 f9 30             	cmp    ecx,0x30
+  40102b:	72 12                	jb     40103f <parsed>
+  40102d:	83 f9 39             	cmp    ecx,0x39
+  401030:	77 0d                	ja     40103f <parsed>
+  401032:	83 e9 30             	sub    ecx,0x30
+  401035:	6b c0 0a             	imul   eax,eax,0xa
+  401038:	01 c8                	add    eax,ecx
+  40103a:	48 ff c6             	inc    rsi
+  40103d:	eb dc                	jmp    40101b <next>
+
+000000000040103f <parsed>:
+  40103f:	01 c0                	add    eax,eax
+  401041:	48 8d 3d e4 1f 00 00 	lea    rdi,[rip+0x1fe4]        # 40302c <numbuf+0x4>
+  401048:	bb 0a 00 00 00       	mov    ebx,0xa
+  40104d:	31 c9                	xor    ecx,ecx
+
+000000000040104f <digits>:
+  40104f:	31 d2                	xor    edx,edx
+  401051:	f7 f3                	div    ebx
+  401053:	80 c2 30             	add    dl,0x30
+  401056:	48 ff cf             	dec    rdi
+  401059:	88 17                	mov    BYTE PTR [rdi],dl
+  40105b:	ff c1                	inc    ecx
+  40105d:	85 c0                	test   eax,eax
+  40105f:	75 ee                	jne    40104f <digits>
+  401061:	c6 04 0f 0a          	mov    BYTE PTR [rdi+rcx*1],0xa
+  401065:	49 89 f8             	mov    r8,rdi
+  401068:	4c 8d 49 01          	lea    r9,[rcx+0x1]
+  40106c:	b8 01 00 00 00       	mov    eax,0x1
+  401071:	bf 01 00 00 00       	mov    edi,0x1
+  401076:	48 8d 35 83 0f 00 00 	lea    rsi,[rip+0xf83]        # 402000 <prefix>
+  40107d:	ba 08 00 00 00       	mov    edx,0x8
+  401082:	0f 05                	syscall
+  401084:	b8 01 00 00 00       	mov    eax,0x1
+  401089:	bf 01 00 00 00       	mov    edi,0x1
+  40108e:	4c 89 c6             	mov    rsi,r8
+  401091:	4c 89 ca             	mov    rdx,r9
+  401094:	0f 05                	syscall
+  401096:	b8 3c 00 00 00       	mov    eax,0x3c
+  40109b:	31 ff                	xor    edi,edi
+  40109d:	0f 05                	syscall

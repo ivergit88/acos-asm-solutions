@@ -1,0 +1,23 @@
+
+build/min:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000401000 <_start>:
+  401000:	b8 07 00 00 00       	mov    eax,0x7
+  401005:	bb 03 00 00 00       	mov    ebx,0x3
+  40100a:	b9 02 00 00 00       	mov    ecx,0x2
+  40100f:	39 d8                	cmp    eax,ebx
+  401011:	7e 02                	jle    401015 <check_c>
+  401013:	89 d8                	mov    eax,ebx
+
+0000000000401015 <check_c>:
+  401015:	39 c8                	cmp    eax,ecx
+  401017:	7e 02                	jle    40101b <done>
+  401019:	89 c8                	mov    eax,ecx
+
+000000000040101b <done>:
+  40101b:	89 c7                	mov    edi,eax
+  40101d:	b8 3c 00 00 00       	mov    eax,0x3c
+  401022:	0f 05                	syscall
